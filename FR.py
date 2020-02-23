@@ -26,4 +26,20 @@ def sharpenEdges(img):
     sharpend = cv2.filter2D(img, -1, kernel)
     cv2.imshow('sharped', sharpend)
     return sharpend
+#----------------------------------------------------------------------------
+# function used to resize image
+# input: image, dim = (x,y)
+# output: image
+def resizeImage(img, dim=(650,550)):
+    resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+    return resized
+#----------------------------------------------------------------------------
+# function used to change image to binary
+# input: image
+# output: binary image
+def binaryImage(img):
+    binary_image = np.copy(img)
+    binary_image = cv2.cvtColor(binary_image, cv2.COLOR_BGR2GRAY)
+    binary_image[binary_image>0] = 255
+    return binary_image
 

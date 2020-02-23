@@ -58,7 +58,7 @@ def extractSkin(img, skinMask):
     CANNY_THRESH_2 = 200
     MASK_DILATE_ITER = 10
     MASK_ERODE_ITER = 10
-    MASK_COLOR = (1.0,1.0,1.0)
+    MASK_COLOR = (0,0,0)
     edges = cv2.Canny(skinMask, CANNY_THRESH_1, CANNY_THRESH_2)
     edges = cv2.dilate(edges, None)
     edges = cv2.erode(edges, None)
