@@ -32,7 +32,7 @@ def get_box(img,RGB_img):
             else:
                 minor_axis = y+h
                 major_axis = x+w
-            if((w/h < box_ratio_upper_bound)and (w/h > box_ratio_lower_bound) and (minor_axis/major_axis > 0.25) and (minor_axis/major_axis<0.97) and area > 1000):
+            if((w/h < box_ratio_upper_bound)and (w/h > box_ratio_lower_bound) and (minor_axis/major_axis > 0.25) and (minor_axis/major_axis<0.97) and area > 1500):
                 if w/h <= 0.7:
                     h = int(h- 0.2*h)
                 cv2.rectangle(img, (x, y), (x + w, y + h), (255, 255, 255), 2)
@@ -46,6 +46,8 @@ def get_box(img,RGB_img):
         masks[masks==1] = 255
         masks[masks>0] = 255
         img[masks==0] = 0
+        cv2.imshow('skin_img', img) 
+        cv2.waitKey(0)
         return bounding_boxes, img
 
 def draw_RGB_with_Rect(RGB_image,Boundary_boxes, cp):

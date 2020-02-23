@@ -19,7 +19,7 @@ skin_mask = segmentSkin(smoothed_img)
 cv2.waitKey(0)
 # remove background
 skin_img = extractSkin(smoothed_img,skin_mask)
-cv2.imshow('skin_img', skin_img) 
+cv2.imshow('skin_img1', skin_img) 
 cv2.waitKey(0)
 # get binary cleaned mask
 binary_cleaned_skin = binaryImage(skin_img)

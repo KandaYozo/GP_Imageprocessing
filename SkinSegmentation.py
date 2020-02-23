@@ -54,6 +54,7 @@ def fill_holes(img):
 # output: skin only image
 def extractSkin(img, skinMask):
     BLUR = 21
+    img2 = np.copy(img)
     CANNY_THRESH_1 = 10
     CANNY_THRESH_2 = 200
     MASK_DILATE_ITER = 10
@@ -64,13 +65,18 @@ def extractSkin(img, skinMask):
     edges = cv2.erode(edges, None)
     contour_info = []
     contours,_ = cv2.findContours(edges, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
+    cntf = []
     for c in contours:
         contour_info.append((
             c,
             cv2.isContourConvex(c),
             cv2.contourArea(c),
         ))
+    cv2.drawContours(img, contours, -1, 255, 3)
+    cv2.imshow('contours', img) 
+    cv2.waitKey(0)
     contour_info = sorted(contour_info, key=lambda c: c[2], reverse=True)
+    #--------------------------
     max_contour = contour_info[0]
 
     mask = np.zeros(edges.shape)
