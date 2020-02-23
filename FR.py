@@ -6,8 +6,7 @@ import skimage.io as io
 # input: none
 # output: image
 def readFrame():
-    img = cv2.imread('C:/Users/Hambart/Desktop/GP/DataSet-Trial/myface.jpg')
-    print(img)
+    img = cv2.imread('C:/Users/Hambart/Desktop/GP/DataSet-Trial/gface.jpg')
     cv2.imshow('img', img)
     return img
 #----------------------------------------------------------------------------
@@ -31,7 +30,7 @@ def sharpenEdges(img):
 # function used to resize image
 # input: image, dim = (x,y)
 # output: image
-def resizeImage(img, dim=(650,550)):
+def resizeImage(img, dim=(650,650)):
     resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
     return resized
 #----------------------------------------------------------------------------
