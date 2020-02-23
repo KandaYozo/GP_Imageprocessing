@@ -6,7 +6,8 @@ import skimage.io as io
 # input: none
 # output: image
 def readFrame():
-    img = cv2.imread('C:/Users/Hambart/Desktop/GP/DataSet-Trial/close.png')
+    img = cv2.imread('C:/Users/Hambart/Desktop/GP/DataSet-Trial/myface.jpg')
+    print(img)
     cv2.imshow('img', img)
     return img
 #----------------------------------------------------------------------------
