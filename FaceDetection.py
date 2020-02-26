@@ -34,7 +34,7 @@ def get_box(img,RGB_img):
                 major_axis = x+w
             if((w/h < box_ratio_upper_bound)and (w/h > box_ratio_lower_bound) and (minor_axis/major_axis > 0.25) and (minor_axis/major_axis<0.97) and area > 1500):
                 if w/h <= 0.7:
-                    h = int(h- 0.2*h)
+                    h = int(h- 0.3*h)
                 cv2.rectangle(img, (x, y), (x + w, y + h), (255, 255, 255), 2)
                 mask = np.zeros(img.shape).astype("uint8")
                 mask[y:y+h,x:x+w] = 255
@@ -55,4 +55,8 @@ def draw_RGB_with_Rect(RGB_image,Boundary_boxes, cp):
     contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     x, y, width, height = cv2.boundingRect(contours[0])
     roi = RGB_image[y:y+height, x:x+width]
-    return roi
+    y0=y
+    y1=y+height
+    x0 = x
+    x1= x+width
+    return roi,y0,y1,x0,x1
